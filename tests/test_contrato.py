@@ -1,5 +1,5 @@
 import pytest
-import datetime
+from datetime import datetime
 from src.contrato import BaseCliente
 
 def test_validacao_de_dados():
@@ -8,7 +8,7 @@ def test_validacao_de_dados():
             "campanha": "Campanha de Conversão",
             "conjunto_anuncios": "Público de Seguidores",
             "anuncios": "Black Friday",
-            "data": datetime.now(),
+            "data": datetime(2024,11,30),
             "valor_usado": 100.00,
             "impressoes": 1000000,
             "alcance": 500000,
@@ -27,15 +27,15 @@ def test_validacao_de_dados():
             "salvamentos": 100,
             "veiculacao": "active",
             "nivel_veiculacao": "ad",
-            "inicio_relatorios": datetime.now(),
-            "termino_relatorios": datetime.now()
+            "inicio_relatorios": datetime(2024,11,1),
+            "termino_relatorios": datetime(2024,11,30)
         }
 
     dados_cliente = BaseCliente(**dados_validos)
     
     assert dados_cliente.campanha == dados_validos["campanha"]
     assert dados_cliente.conjunto_anuncios == dados_validos["conjunto_anuncios"]
-    assert dados_cliente.anuncio == dados_validos["anuncios"]
+    assert dados_cliente.anuncios == dados_validos["anuncios"]
     assert dados_cliente.data == dados_validos["data"]
     assert dados_cliente.valor_usado == dados_validos["valor_usado"]
     assert dados_cliente.impressoes == dados_validos["impressoes"]
@@ -54,6 +54,6 @@ def test_validacao_de_dados():
     assert dados_cliente.compartilhamentos == dados_validos["compartilhamentos"]
     assert dados_cliente.salvamentos == dados_validos["salvamentos"]
     assert dados_cliente.veiculacao == dados_validos["veiculacao"]
-    assert dados_cliente.nivel_veiculacao == ["veiculacao"]
-    assert dados_cliente.inicio_relatorio == ["inicio_relatorios"]
-    assert dados_cliente.termino_relatorio == ["termino_relatorios"]
+    assert dados_cliente.nivel_veiculacao == dados_validos["nivel_veiculacao"]
+    assert dados_cliente.inicio_relatorios == dados_validos["inicio_relatorios"]
+    assert dados_cliente.termino_relatorios == dados_validos["termino_relatorios"]

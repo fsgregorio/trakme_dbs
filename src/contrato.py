@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr, PositiveFloat, PositiveInt, field_validator
 from datetime import datetime
 
 class BaseCliente(BaseModel):
@@ -6,22 +6,22 @@ class BaseCliente(BaseModel):
     conjunto_anuncios: str
     anuncios: str
     data: datetime
-    valor_usado: float
-    impressoes: int
-    alcance: int
-    cliques_link: int
-    page_view: int
-    conversas_iniciadas: int
-    visitas_instagram: int
-    leads: int
-    add_carrinho: int
-    checkout: int
-    compras: int
-    valor_compra: float
-    reacoes: int
-    comentarios: int
-    compartilhamentos: int
-    salvamentos: int
+    valor_usado: PositiveFloat
+    impressoes: PositiveInt
+    alcance: PositiveInt
+    cliques_link: PositiveInt
+    page_view: PositiveInt
+    conversas_iniciadas: PositiveInt
+    visitas_instagram: PositiveInt
+    leads: PositiveInt
+    add_carrinho: PositiveInt
+    checkout: PositiveInt
+    compras: PositiveInt
+    valor_compra: PositiveFloat
+    reacoes: PositiveInt
+    comentarios: PositiveInt
+    compartilhamentos: PositiveInt
+    salvamentos: PositiveInt
     veiculacao: str
     nivel_veiculacao: str
     inicio_relatorios: datetime
