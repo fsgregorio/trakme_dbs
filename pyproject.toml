@@ -7,12 +7,35 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
-pandas = "^2.2.3"
 streamlit = "^1.40.1"
 pydantic = "^2.9.2"
 pytest = "^8.3.3"
+selenium = "^4.27.1"
+webdriver-manager = "^4.0.2"
+taskipy = "^1.14.1"
+pandas = "^2.2.3"
 
+
+[tool.poetry.group.dev.dependencies]
+taskipy = "^1.14.1"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.taskipy.tasks]
+run = """
+    for /f "tokens=5" %%a in ('netstat -ano ^| findstr :8501') do (
+        taskkill /PID %%a /F
+    )
+    streamlit run src/app.py
+"""
+
+test = """
+    for /f "tokens=5" %%a in ('netstat -ano ^| findstr :8501') do (
+        taskkill /PID %%a /F
+    )
+    pytest tests -v
+"""
+
+
